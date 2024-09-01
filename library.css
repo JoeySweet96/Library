@@ -32,7 +32,7 @@ body {
     display: none;
 }
 
-#new-book-button {
+#newbookbutton {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -52,7 +52,10 @@ body {
     padding: 20px;
     border-radius: 10px;
     width: 300px;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #closeModal {

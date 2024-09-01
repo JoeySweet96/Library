@@ -1,25 +1,6 @@
 console.log("Hey");
 
-const myLibrary = [
-    {
-        title: "Book One",
-        author: "Author One",
-        year: 2021,
-        pages: 250
-    },
-    {
-        title: "Book Two",
-        author: "Author Two",
-        year: 2020,
-        pages: 300
-    },
-    {
-        title: "Book Three",
-        author: "Author Three",
-        year: 2022,
-        pages: 150
-    }
-];
+const myLibrary = [];
 
 function Book(title, author, pages, isRead) {
     this.title = title;
@@ -52,4 +33,30 @@ function displayBooks(library) {
     });
 }
 
-displayBooks(myLibrary);
+const bookModal = document.getElementById('modal');
+const newBookBtn = document.getElementById('newbookbutton');
+newBookBtn.addEventListener('click', () => {
+    bookModal.style.display = 'block';
+});
+
+const closeModal = document.getElementById('closeModal');
+closeModal.addEventListener('click', () => {
+    bookModal.style.display = 'none';
+});
+
+const bookForm = document.getElementById('bookform');
+bookForm.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = parseInt(document.getElementById('pages').value, 10);
+    const isRead = document.getElementById('read').checked;
+
+    addBookToLibrary(title, author, pages, isRead);
+
+    bookModal.style.display = 'none';
+    bookForm.reset();
+
+});
