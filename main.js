@@ -19,7 +19,7 @@ function displayBooks(library) {
     const books = document.getElementById('bookList');
     books.innerHTML = '';
 
-    library.forEach(book => {
+    library.forEach((book, index) => {
         const bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
 
@@ -28,6 +28,17 @@ function displayBooks(library) {
         <p>Author: ${book.author}</p>
         <p>Pages: ${book.pages}</p>
         <p>Read: ${book.isRead}</p>`;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'delete';
+        deleteBtn.classList.add('delete-button');
+
+        deleteBtn.addEventListener('click', () => {
+            library.splice(index, 1);
+            displayBooks(library);
+        });
+
+        bookDiv.appendChild(deleteBtn);
 
         books.appendChild(bookDiv);
     });
